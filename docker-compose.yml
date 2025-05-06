@@ -5,13 +5,11 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root123
       TZ: Asia/Shanghai
-      MYSQL_INITDB_CHARSET: utf8mb4
-      MYSQL_INITDB_COLLATION: utf8mb4_general_ci
     ports:
       - 3306:3306
     volumes:
       - ./mysql57/data:/var/lib/mysql  
-      # - ./mysql57/conf:/etc/mysql/conf.d #  
+      - ./mysql57/conf:/etc/mysql/conf.d
 
   mysql80:
     image: mysql:8.0.35
@@ -23,7 +21,7 @@ services:
       - 3307:3306
     volumes:
       - ./mysql80/data:/var/lib/mysql
-      # - ./mysql80/conf:/etc/mysql/conf.d
+      - ./mysql80/conf:/etc/mysql/conf.d
     command:
       - --default-authentication-plugin=mysql_native_password # 避免PHP等客户端兼容问题
 

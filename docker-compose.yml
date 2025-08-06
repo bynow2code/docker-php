@@ -8,7 +8,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - ./mysql57/data:/var/lib/mysql  
+      - mysql5.7.41_data:/var/lib/mysql  
       - ./mysql57/conf:/etc/mysql/conf.d
 
   mysql80:
@@ -20,7 +20,7 @@ services:
     ports:
       - 3307:3306
     volumes:
-      - ./mysql80/data:/var/lib/mysql
+      - mysql8.0.35_data:/var/lib/mysql
       - ./mysql80/conf:/etc/mysql/conf.d
     command:
       - --default-authentication-plugin=mysql_native_password # 避免PHP等客户端兼容问题
@@ -33,7 +33,7 @@ services:
     ports:
       - 6379:6379
     volumes:
-      - ./redis/data:/data  
+      - redis6.2.14_data:/data  
       # - ./redis/conf/redis.conf:/etc/redis/redis.conf  # 自定义配置，默认容器内不包含配置文件，可以从http://download.redis.io下载，或者从redis压缩包中获取
 
   php73:
@@ -75,3 +75,8 @@ services:
       - ./www:/usr/share/nginx/html
     ports:
       - 8080:80
+
+volumes:
+  mysql5.7.41_data:
+  mysql8.0.35_data:
+  redis6.2.14_data:

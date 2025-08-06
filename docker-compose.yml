@@ -47,8 +47,6 @@ services:
       - ./php73/php.ini-development:/usr/local/etc/php/php.ini
       - ./php73/php-fpm.conf:/usr/local/etc/php-fpm.conf
       - ./www:/usr/share/nginx/html
-    expose:
-      - 9000                       
 
   php81:
     build:
@@ -61,8 +59,6 @@ services:
       - ./php81/php.ini-development:/usr/local/etc/php/php.ini
       - ./php81/php-fpm.conf:/usr/local/etc/php-fpm.conf
       - ./www:/usr/share/nginx/html
-    expose:
-      - 9000
 
   nginx:
     image: nginx:1.26.3

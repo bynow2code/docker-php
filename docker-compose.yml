@@ -41,6 +41,8 @@ services:
       build: 
         context: .
         dockerfile: frankenphp/Dockerfile
+      environment:
+        TZ: Asia/Shanghai
       ports:
         - "80:80" # HTTP
         - "443:443" # HTTPS
@@ -48,6 +50,7 @@ services:
         - ./www:/app/public
         - caddy_data:/data
         - caddy_config:/config
+        # - ./frankenphp/Caddyfile:/etc/frankenphp/Caddyfile
       tty: true
 
 volumes:

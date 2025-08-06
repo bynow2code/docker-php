@@ -1,0 +1,7 @@
+{$SERVER_NAME:localhost} {
+    root /app/public
+	# 启用压缩（可选）
+	encode zstd br gzip
+	# 执行当前目录中的 PHP 文件并提供资产
+	php_server
+}

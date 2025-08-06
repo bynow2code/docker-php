@@ -10,10 +10,6 @@ FROM dunglas/frankenphp:1.9.0-php8-alpine
 
 # COPY --from=composer /usr/bin/composer /usr/bin/composer
 
-# 设置时区为上海（Asia/Shanghai）
-ENV TZ=Asia/Shanghai
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-
 ENV SERVER_NAME="127.0.0.1, 172.18.0.2"
 
 # 开发:

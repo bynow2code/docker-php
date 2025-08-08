@@ -1,4 +1,4 @@
-FROM dunglas/frankenphp:1.9.0-php8-alpine
+FROM dunglas/frankenphp:1.9.0-php8.4-alpine
 
 # 在此处添加其他扩展：
 # RUN install-php-extensions \

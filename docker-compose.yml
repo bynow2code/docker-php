@@ -1,46 +1,42 @@
 services:
-  mysql57:
+  mysql5.7:
     image: mysql:5.7.41
-    container_name: mysql57
     environment:
       MYSQL_ROOT_PASSWORD: root123
       TZ: Asia/Shanghai
     ports:
       - 3306:3306
     volumes:
-      - mysql5.7.41_data:/var/lib/mysql  
+      - mysql5.7_data:/var/lib/mysql  
       - ./mysql57/conf:/etc/mysql/conf.d
 
-  mysql80:
+  mysql8.0:
     image: mysql:8.0.35
-    container_name: mysql80
     environment:
       MYSQL_ROOT_PASSWORD: root123
       TZ: Asia/Shanghai
     ports:
       - 3307:3306
     volumes:
-      - mysql8.0.35_data:/var/lib/mysql
+      - mysql8.0_data:/var/lib/mysql
       - ./mysql80/conf:/etc/mysql/conf.d
     command:
       - --default-authentication-plugin=mysql_native_password # 避免PHP等客户端兼容问题
 
-  redis:
+  redis6.2:
     image: redis:6.2.14
-    container_name: redis
     environment:
       TZ: Asia/Shanghai
     ports:
       - 6379:6379
     volumes:
-      - redis6.2.14_data:/data  
+      - redis6.2_data:/data  
       # - ./redis/conf/redis.conf:/etc/redis/redis.conf  # 自定义配置，默认容器内不包含配置文件，可以从http://download.redis.io下载，或者从redis压缩包中获取
 
-  php73:
+  php7.3:
     build:
       context: .
       dockerfile: php73/Dockerfile
-    container_name: php73
     environment:
       TZ: Asia/Shanghai
     volumes:
@@ -48,11 +44,10 @@ services:
       - ./php73/php-fpm.conf:/usr/local/etc/php-fpm.conf
       - ./www:/usr/share/nginx/html
 
-  php81:
+  php8.1:
     build:
       context: .
       dockerfile: php81/Dockerfile
-    container_name: php81
     environment:
       TZ: Asia/Shanghai
     volumes:
@@ -73,6 +68,6 @@ services:
       - 8080:80
 
 volumes:
-  mysql5.7.41_data:
-  mysql8.0.35_data:
-  redis6.2.14_data:
+  mysql5.7_data:
+  mysql8.0_data:
+  redis6.2_data:
